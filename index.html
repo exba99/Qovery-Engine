@@ -1,0 +1,181 @@
+<html>
+<head>
+    <title>Parcel Sandbox</title>
+    <meta charset="UTF-8"/>
+    <link rel="stylesheet" type="text/css" href="src/styles.scss"/>
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <!-- Canonical -->
+    <link rel="canonical" href="https://www.example.com">
+    <!-- Robots -->
+    <meta name="robots" content="noindex, nofollow">
+    <!-- Device -->
+    <!-- <meta name="viwport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no"> -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=5">
+    <meta name="format-detection" content="telephone=no">
+    <!-- Title -->
+    <title>Quick Parcel Project</title>
+    <!-- Description -->
+    <meta name="description" content="Home description.">
+    <!-- Social -->
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Quick Parcel Project — Home">
+    <meta name="twitter:description" content="Home description.">
+    <meta name="twitter:image" content="">
+    <!-- Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.example.com">
+    <meta property="og:title" content="Quick Parcel Project — Home">
+    <meta property="og:description" content="Home description.">
+    <meta property="og:image" content="">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <!-- Favicon -->
+    <meta name="theme-color" content="#fff">
+</head>
+
+<body>
+    <section class="hero-banner">
+        <div class="logo">
+            <a href="#"><img src="assets/img/logo.svg" alt="Logo"></a>
+        </div>
+        <div class="hero-content">
+            <div class="hero-text">
+                <div class="hero-content-title">
+                    <h1>Qovery Engine</h1>
+                    <span>
+                        <a class="github-button" href="https://github.com/Qovery/engine" data-size="large" data-show-count="true" aria-label="Star ntkme/github-buttons on GitHub">Star</a>
+                    </span>
+                </div>
+                <div class="hero-content-second_title">
+                    Abstraction layer to deploy microservices applications on any Cloud provider.
+                </div>
+                <p>Qovery Engine is an open-source abstraction layer product that turns easy apps deployment on AWS, GCP, Azure and others Cloud providers. </p>
+                <div class="hero-content-btn">
+                    <button class="btn-github"><img src="assets/img/github icon.svg" alt="Gtihub Icon"></img>See on Github</button>
+                    <button class="btn-discord"><img src="assets/img/discord icon.svg" alt="Discord Icon"></img>Join us on Discord</button>
+                </div>
+            </div>
+            <div class="hero-illus">
+                <img src="assets/img/illustration.svg" alt="Illustration">
+            </div>
+        </div>
+    </section>
+    <section class="concept">
+        <h1 class="concept-title">How does it work?</h1>
+        <p class="concept-text">Qovery Engine is an open-source abstraction layer product that turns easy apps deployment on AWS, GCP, Azure and others Cloud providers. The Qovery Engine is coded in Rust and takes advantage of Terraform, Helm, Kubectl, Docker to manage resources.</p>
+        <img src="assets/img/concept.svg" alt="" class="concept-img">
+    </section>
+    <section class="usage">
+        <h1 class="usage-title">Usage</h1>
+        <p class="usage-text">Initialize EKS (AWS Kubernetes) and ECR (AWS container registry) on AWS</p>
+        <div class="usage-img">
+            <img src="assets/img/usage-bg.svg" alt="Usage">
+        </div>
+        <div class="usage-code">
+            <button class="usage-code-btn">RUST</button>
+            <div>
+                <pre class="hljs" style="display: block; padding: 0.5em; color: rgb(51, 51, 51); overflow-x: auto;"><span class="hljs-keyword" style="color: rgb(167, 29, 93);">
+let</span> engine = Engine::new(
+    context, <span class="hljs-comment" style="color: rgb(150, 152, 150);">// parameters</span>
+    local_docker, <span class="hljs-comment" style="color: rgb(150, 152, 150);">// initialize Docker as a Build Platform</span>
+    ecr, <span class="hljs-comment" style="color: rgb(150, 152, 150);">// initialize Elastic Container Registry</span>
+    aws, <span class="hljs-comment" style="color: rgb(150, 152, 150);">// initialize AWS account</span>
+    cloudflare, <span class="hljs-comment" style="color: rgb(150, 152, 150);">// initialize Cloudflare as DNS Nameservers</span>
+);
+                        
+<span class="hljs-keyword" style="color: rgb(167, 29, 93);">let</span> session = <span class="hljs-keyword" style="color: rgb(167, 29, 93);">match</span> engine.session() {
+    <span class="hljs-literal" style="color: rgb(0, 134, 179);">Ok</span>(session) =&gt; session, <span class="hljs-comment" style="color: rgb(150, 152, 150);">// get the session</span>
+    <span class="hljs-literal" style="color: rgb(0, 134, 179);">Err</span>(config_error) =&gt; <span class="hljs-built_in">panic!</span>(<span class="hljs-string" style="color: rgb(223, 80, 0);">"configuration error {:?}"</span>, config_error),
+};
+            
+<span class="hljs-keyword" style="color: rgb(167, 29, 93);">let</span> <span class="hljs-keyword" style="color: rgb(167, 29, 93);">mut</span> tx = session.transaction();
+            
+<span class="hljs-comment" style="color: rgb(150, 152, 150);">// create EKS (AWS managed Kubernetes cluster)</span>
+tx.create_kubernetes(&amp;eks);
+            
+<span class="hljs-comment" style="color: rgb(150, 152, 150);">// create the infrastructure and wait for the result</span>
+<span class="hljs-keyword" style="color: rgb(167, 29, 93);">match</span> tx.commit() { 
+    TransactionResult::<span class="hljs-literal" style="color: rgb(0, 134, 179);">Ok</span> =&gt; <span class="hljs-built_in">println!</span>(<span class="hljs-string" style="color: rgb(223, 80, 0);">"OK"</span>),
+    TransactionResult::Rollback(commit_err) =&gt; <span class="hljs-built_in">println!</span>(<span class="hljs-string" style="color: rgb(223, 80, 0);">"ERROR but rollback OK"</span>), 
+    TransactionResult::UnrecoverableError(commit_err, rollback_err) =&gt; <span class="hljs-built_in">println!</span>(<span class="hljs-string" style="color: rgb(223, 80, 0);">"FATAL ERROR"</span>)
+};
+        </pre>
+    </div>
+        </div>
+        <div class="usage-btn">
+            <button class="btn-github"><img src="assets/img/github icon.svg" alt="Gtihub Icon"></img>See on Github</button>
+            <button class="btn-discord"><img src="assets/img/discord icon.svg" alt="Discord Icon"></img>Join us on Discord</button>
+        </div>
+    </section>
+    <section class="blogs">
+        <div class="blog">
+            <div class="blog-block">
+                <div class="blog-logo">
+                    <img src="assets/img/blog-img1.svg" class="blog-img1" alt="Image 1">
+                </div>
+                <h1 class="blog-title">
+                    Deploy real world applications
+                </h1>
+                <div class="blog-text">
+                    <p>Qovery Engine empowers you to deploy complex applications, such as a backend, a frontend, and a database in a very simple way</p>
+                    <p>Servers, networking, security, all is done by the Engine for you.</p>
+                    <a href="#">SEE MORE</a>
+                </div>
+            </div>
+            <div class="blog-block">
+                <div class="blog-logo">
+                    <img src="assets/img/blog-img2.svg" class="blog-img2" alt="Image 2">
+                </div>
+                <h1 class="blog-title">
+                    Resiliency is key
+                </h1>
+                <div class="blog-text">
+                    <p>Qovery Engine knows when something goes wrong on the deployment of your applications. Qovery Engine is built with resiliency in mind.</p>
+                    <p>A transactional engine inspired by what is provided into ACID databases has been developed at the heart of the product to rollback on a consistent and working application version when something goes wrong. </p>
+                    <a href="#">SEE MORE</a>
+                </div>
+            </div>
+        </div>
+        <div class="blog">
+            <div class="blog-block">
+                <div class="blog-logo">
+                    <img src="assets/img/blog-img3.svg" class="blog-img3" alt="Image 3">
+                </div>
+                <h1 class="blog-title">
+                    On top of the best tools
+                </h1>
+                <div class="blog-text">
+                    <p>Qovery Engine does not reinvent the wheel. It takes advantage of the best tools in the Cloud industry, such as Kubernetes, Terraform, and Helm to manage the deployment of the infrastructure and your applications.</p>
+                    <p>Servers, networking, security, all is done by the Engine for you.</p>
+                    <a href="#">SEE MORE</a>
+                </div>
+            </div>
+            <div class="blog-block">
+                <div class="blog-logo">
+                    <img src="assets/img/blog-img4.svg" class="blog-img4" alt="Image 4">
+                </div>
+                <h1 class="blog-title">
+                    Extensible
+                </h1>
+                <div class="blog-text">
+                    <p>Qovery Engine is built to be highly extensible. Adding the support of a Cloud provider or a Continuous Integration platform is as simple as implementing a simple programmatic interface.  </p>
+                    <a href="#">SEE MORE</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="partners">
+        <h1 class="partner-title">They use Qovery Engine</h1>
+        <div class="partner-img">
+            <img src="assets/img/starpi.svg" alt="Strapi">
+            <img src="assets/img/zendesk.svg" alt="Zendesk">
+            <img src="assets/img/helios.svg" alt="Helios">
+        </div>
+    </section>
+    <section class="footer"> 
+    </section>
+    <!-- Place this tag in your head or just before your close body tag. -->
+<script async defer src="https://buttons.github.io/buttons.js"></script>
+</body>
+</html>

@@ -1,0 +1,166 @@
+@font-face {
+    font-family: "HK Grotesk";
+    src: url("/assets/fonts/webfonts/HKGrotesk-ExtraBold.otf"),
+         url("/assets/fonts/webfonts/HKGrotesk-Bold.otf");
+}
+
+@font-face {
+    font-family: "SF UI Text";
+    src: url("/assets/fonts/webfonts/SFUIText-Regular.ttf");
+}
+
+
+.hero-banner{
+    background: #151B2B;
+    color: white;
+}
+
+
+.logo{
+    animation: slideinTopToBottom 1.5s .5s forwards;
+    opacity: 0;
+    width: 80%;
+    margin-left: 10%;
+    margin-right: 10%;
+
+    img{
+        width: 151px;
+        padding-top: 41px;
+    }
+}
+
+.hero-content{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    width: 80%;
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+.hero-text{
+    animation: slideinBottomToTop 1.5s;
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    justify-items: flex-start;
+    margin-top: 120px;
+    max-width: 530px;
+
+    p{
+       font-family: 'SF UI Text';
+       font-weight: 400; 
+       font-size: 16px;
+       line-height: 24px;
+       color: #8686B2;
+       margin-top: 24px;
+    }
+}
+
+.hero-content-title{
+    h1{
+        font-family: 'HK Grotesk';
+        font-weight: 800;
+        font-size: 45px;
+        font-weight: 50px;
+        display: inline;
+    }
+
+    span{
+        padding-left: 14px;
+    }
+}
+
+.hero-content-btn{
+    margin-top: 48px;
+    display: flex;
+    justify-content: flex-start;
+}
+
+
+.btn-github{
+    padding: 9px 16px;
+    min-width: 160px;
+    background: #454658;
+    height: 39px;
+    border: 0;
+    color: #fff;
+    border-radius: 3px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 24px 24px 0 0;
+
+    img{
+        padding: 0;
+        width: 19px;
+        margin-right: 5px;
+    }
+}
+
+.btn-discord{
+    padding: 9px 16px;
+    min-width: 190px;
+    background: #6578C0;    
+    min-height: 39px;
+    border: 0;
+    color: #fff;
+    border-radius: 3px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 24px 0px;
+
+    img{
+        padding: 0;
+        width: 16px;
+        margin-right: 5px;
+    }
+}
+
+
+.hero-content-second_title{
+    margin-top: 24px;
+    font-family: 'HK Grotesk';
+    font-weight: 600;
+    font-size: 24px;
+    font-weight: 30px;
+}
+
+.hero-illus{
+    animation: slideinBottomToTop 1.5s;
+    width: 50%;
+    margin-top: -30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    img{
+        max-width: 560px;
+    }
+}
+
+@keyframes slideinBottomToTop {
+    0% {
+        opacity: .5;
+        transform: translateY(40px);
+    }
+  
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+  }
+
+
+  @keyframes slideinTopToBottom {
+    0% {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+  
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+  }
